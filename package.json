@@ -13,8 +13,7 @@
     "db:reset": "npm run db:schema && npm run db:seed"
   },
   "imports": {
-    "#db/*": "./db/*",
-    "#*": "./*"
+    "#*": "./*.js"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
