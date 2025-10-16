@@ -1,5 +1,5 @@
-import db from ".db/client";
-import { createEmployee } from "./queries/employees.js";
+import db from "#db/client.js";
+import { createEmployee } from "#db/queries/employees.js";
 
 async function seedEmployees() {
   // Optional: clear the table first to avoid duplicates
