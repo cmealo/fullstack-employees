@@ -1,4 +1,4 @@
-// db/client.js
+// db/client.js --
 import pg from "pg";
 
 if (!process.env.DATABASE_URL) {
