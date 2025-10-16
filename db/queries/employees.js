@@ -41,11 +41,11 @@ export async function updateEmployee({ id, name, birthday, salary }) {
        SET name = $2,
            birthday = $3,
            salary = $4
-     WHERE id = $1
-     RETURNING *;
+     WHERE id = $1::int
+     RETURNING id, name, birthday, salary;
   `;
   const { rows } = await db.query(sql, [id, name, birthday, salary]);
-  return rows[0]; // returns undefined if not found (this is correct)
+  return rows[0]; // undefined if not found (correct for tests)
 }
 
 /**

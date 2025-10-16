@@ -41,7 +41,7 @@ router.post("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const id = parseId(req.params.id);
-    if (!Number.isFinite(id) || id <= 0) {
+    if (!Number.isFinite(id)) {
       return res.status(400).json({ error: "id must be a positive integer" });
     }
     const employee = await getEmployee(id);
@@ -57,7 +57,7 @@ router.get("/:id", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     const id = parseId(req.params.id);
-    if (!Number.isFinite(id) || id <= 0) {
+    if (!Number.isFinite(id)) {
       return res.status(400).json({ error: "id must be a positive integer" });
     }
     const { name, birthday, salary } = req.body || {};
@@ -79,10 +79,9 @@ router.put("/:id", async (req, res, next) => {
 // DELETE /employees/:id  -> delete employee
 router.delete("/:id", async (req, res, next) => {
   try {
-    const id = parseId(req.params.id);
-    if (!Number.isFinite(id) || id <= 0) {
-      return res.status(400).json({ error: "id must be a positive integer" });
-    }
+const id = parseId(req.params.id);
+if (!Number.isFinite(id)) {
+  return res.status(400).json({ error: "id must be a positive integer" });
 
     const deleted = await deleteEmployee(id);
     if (!deleted) return res.status(404).json({ error: "Employee not found" });
